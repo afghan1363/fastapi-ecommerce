@@ -20,7 +20,7 @@ class Review(Base):
     product_id: Mapped[int] = mapped_column(Integer, ForeignKey("products.id"), nullable=False)
     product: Mapped["Product"] = relationship(back_populates="reviews", uselist=False)
 
-    @validates('drade')
+    @validates('grade')
     def validate_grade(self, key, value):
         if not 0 < value <= 5:
             raise ValueError(f'Invalid grade {value}. Must be between 1 and 5')
